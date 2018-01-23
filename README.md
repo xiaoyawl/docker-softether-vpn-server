@@ -59,6 +59,15 @@ docker run -d --cap-add NET_ADMIN --name softether-vpn-server -p 443:443/tcp -p 
 ```
 Add/delete any ```-p $PORT:$PORT/{tcp,udp} depending on you will ```
 
+快速启动:
+```bash
+URL=https://github.com/xiaoyawl/docker-softether-vpn-server/raw/master
+mkdir -p /data/softether/{config,logs} && chown -R 1000:101 /data/softether
+curl -Lk ${URL}/default.vpn_server.config > /data/softether/config/vpn_server.config
+curl -Lk ${URL}/docker-compose.yml > /data/docker-compose.yml
+docker-compose -f /data/docker-compose.yml up -d
+```
+
 # Changelog
 * v4.22-9634-beta : Initial Release
 * v4.22-9634-beta.patch1 : Update Alpine to 3.6, Improve Dockerfile, Secure Entrypoint
