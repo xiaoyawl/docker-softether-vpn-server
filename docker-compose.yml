@@ -1,0 +1,21 @@
+version: '3'
+services:
+  softether:
+    container_name: softether-vpn-server
+    restart: always
+    privileged: true
+    image: amary/softether-vpn-server
+    image: benyoo/softether-vpn-server:v4.24-9651-beta
+    cap_add:
+    - NET_ADMIN
+    ports:
+    - "443:443/tcp"
+    - "992:992/tcp"
+    - "5555:5555/tcp"
+    - "1701:1701/udp"
+    - "1194:1194/udp"
+    - "4500:4500/udp"
+    - "500:500/udp"
+    volumes:
+    - /data/softether/config:/etc/vpnserver:Z
+    - /data/softether/logs:/var/log/vpnserver:Z
