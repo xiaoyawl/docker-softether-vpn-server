@@ -4,7 +4,6 @@ services:
     container_name: softether-vpn-server
     restart: always
     privileged: true
-    image: amary/softether-vpn-server
     image: benyoo/softether-vpn-server:v4.24-9651-beta
     cap_add:
     - NET_ADMIN
