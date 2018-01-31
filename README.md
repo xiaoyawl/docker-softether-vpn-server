@@ -67,6 +67,11 @@ curl -Lk ${URL}/default.vpn_server.config > /data/softether/config/vpn_server.co
 curl -Lk ${URL}/docker-compose.yml > /data/docker-compose.yml
 docker-compose -f /data/docker-compose.yml up -d
 ```
+防火墙规则
+```bash
+-A INPUT                                  -p tcp -m tcp -m state --state NEW -m multiport --dports 443,992,5555 -m comment --comment "SoftEther_VPN" -j ACCEPT
+-A INPUT                                  -p udp -m udp -m state --state NEW -m multiport --dports 500,1194,1701,4500 -m comment --comment "SoftEther_VPN" -j ACCEPT
+```
 
 # Changelog
 * v4.22-9634-beta : Initial Release
